@@ -93,3 +93,17 @@ function Delete(int $id) {
     $result->close();
     $conn->close();
 }
+
+function selectCount(){
+    $conn = connect();
+    $sql = 'SELECT counts FROM completed';
+    $result = $conn->query($sql);
+    if($result){
+        $row = $result->fetch_column();
+    } else {
+        $row = 0;
+    }
+    $result->close();
+    $conn->close();
+    return $row;
+}

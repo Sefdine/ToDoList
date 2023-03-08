@@ -1,6 +1,6 @@
 
 <div class="container">
-    <a href="index.php?action=home&open=1">Completed(<?= $completed ?>)</a>
+    <a href="index.php?action=home&open=1" class="globala">Completed (<?= $completed ?>)<i class="bi bi-arrow-down-short"></i></a>
     <br>
     <div class="closed">
         <?php if ($open == 1):?>

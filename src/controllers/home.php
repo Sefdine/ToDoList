@@ -7,7 +7,7 @@ require_once('src/models/database.php');
 function displayHome(string $err='', int $open=0) {
     $data = selectLists();
     $completes = selectCompleted();
-    $completed = 3;
+    $completed = selectCount();
     require_once('templates/error.php');
     require_once('templates/home.php');
     require_once('templates/display_list.php');
