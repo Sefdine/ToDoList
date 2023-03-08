@@ -1,0 +1,94 @@
+
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
+.container{
+    margin-top: 30px;
+}
+.container h1{
+    text-align: center;
+    border: 1px solid blue;
+    border-radius: 10px;
+    width: max-content;
+    padding: 10px 30px;
+    margin: auto;
+    background-color: rgb(2, 96, 219);
+    color: #fff;
+}
+.form-todo{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.form-contr{
+    background-color: rgb(0, 162, 255);
+    margin-bottom: 10px;
+    border: 5px solid rgb(76, 139, 255);
+    border-radius: 30px;
+    padding: 0 20px;
+    height: 60px;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+.form-contr label{
+    font-size: larger;
+    color: #fff;
+}
+.form-contr input[type='text']{
+    border: none;
+    border-radius: 30px;
+    height: 100%;
+    text-align: center;
+    font-size: larger;
+}
+.form-todo input[type="submit"]{
+    width: max-content;
+    border-radius: 30px;
+    border: none;
+    padding: 10px 20px;
+    background-color: blue;
+    color: #fff;
+    font-size: larger;
+}
+.form-todo input[type="submit"]:hover{
+    background-color: rgb(0, 183, 255);
+    transition: 0.3s;
+}
+
+/* Display list */
+a{
+    color: #fff;
+}
+.display_list{
+    display: grid;
+    grid-template-columns: 4fr 1fr 1fr;
+    grid-column-gap: 25px;
+    margin-top: 10px;
+    background-color: #abd9ee;
+    border-radius: 20px;
+}
+
+.display_list p{
+    color: #3a3a3a;
+    font-size: larger;
+    text-align: center;
+}
+
+.completed{
+    text-decoration: none;
+    color: #4a9915;
+    width: max-content;
+    font-size: larger;
+}
+
+.uncompleted{
+    text-decoration: none;
+    color: #979915;
+    width: max-content;
+    font-size: larger;
+}
+
+.remove{
+    text-decoration: none;
+    color: #992915;
+    width: max-content;
+    font-size: larger;
+}
