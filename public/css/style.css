@@ -54,9 +54,11 @@
 }
 
 /* Display list */
-a{
-    color: #fff;
+.globala{
+    text-decoration: none;
+    font-size: larger;
 }
+
 .display_list{
     display: grid;
     grid-template-columns: 4fr 1fr 1fr;
