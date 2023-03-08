@@ -1,9 +1,9 @@
 <?php
 
 declare(strict_types=1);
+session_start();
 
 require_once('src/controllers/home.php');
-
 $action = $_GET['action'] ?? '';
 if(!$action) {
     displayHome();
@@ -17,6 +17,7 @@ if(!$action) {
                 $_SESSION['open'] = 1;
             }
         }
+
         $sess_open = $_SESSION['open'] ?? 0;
         $err = $_GET['error'] ?? '';
         displayHome($err, $sess_open);
