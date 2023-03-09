@@ -44,4 +44,5 @@ END;
 
 SELECT * FROM completed;
 
+SELECT * FROM todo_list;
 

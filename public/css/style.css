@@ -58,7 +58,6 @@
     text-decoration: none;
     font-size: larger;
 }
-
 .display_list{
     display: grid;
     grid-template-columns: 4fr 1fr 1fr;
@@ -67,30 +66,61 @@
     background-color: #abd9ee;
     border-radius: 20px;
 }
-
 .display_list p{
     color: #3a3a3a;
     font-size: larger;
     text-align: center;
 }
-
 .completed{
     text-decoration: none;
     color: #4a9915;
     width: max-content;
     font-size: larger;
 }
-
 .uncompleted{
     text-decoration: none;
     color: #979915;
     width: max-content;
     font-size: larger;
 }
-
 .remove{
     text-decoration: none;
     color: #992915;
     width: max-content;
     font-size: larger;
 }
+
+@media screen and (max-width: 500px) {
+    .container {
+        margin-top: 10px;
+    }
+    .container h1 {
+        font-size: 20px;
+        padding: 10px;
+    }
+    .form-todo {
+        margin-top: 10px;
+    }
+    .form-contr {
+        height: 40px;
+        padding: 0 10px;
+    }
+    .form-contr label {
+        font-size: 16px;
+    }
+    .form-contr input[type='text'] {
+        font-size: 16px;
+    }
+    .form-todo input[type='submit'] {
+        font-size: 16px;
+        padding: 5px 10px;
+    }
+    .display_list {
+        grid-column-gap: 5px;
+    }
+    .completed, .uncompleted, .remove {
+        font-size: 16px;
+        padding: 5px 10px;
+    }
+}
+
