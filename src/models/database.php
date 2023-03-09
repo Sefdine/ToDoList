@@ -57,40 +57,47 @@ function selectCompleted() {
 
 function setCompleted(int $id) {
     $conn = connect();
-    $sql = "UPDATE todo_list SET status = 1 WHERE id = $id";
-    $result = $conn->query($sql);
+    $sql = "UPDATE todo_list SET status = 1 WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $id);
+    $result = $stmt->execute();
     if ($result) {
         header('Location: index.php?action=home&error=completed');
     } else {
         header('Location: index.php?action=home&error=errcompleted');
     }
-    $result->close();
+    $stmt->close();
     $conn->close();
 }
 
+
 function setUnompleted(int $id) {
     $conn = connect();
-    $sql = "UPDATE todo_list SET status = 0 WHERE id = $id";
-    $result = $conn->query($sql);
+    $sql = "UPDATE todo_list SET status = 0 WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('i', $id);
+    $result = $stmt->execute();
     if ($result) {
         header('Location: index.php?action=home&error=uncompleted');
     } else {
         header('Location: index.php?action=home&error=errcompleted');
     }
-    $result->close();
+    $stmt->close();
     $conn->close();
 }
 
 function Delete(int $id) {
     $conn = connect();
-    $sql = "DELETE FROM todo_list WHERE id = $id";
-    $result = $conn->query($sql);
+    $sql = "DELETE FROM todo_list WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('i', $id);
+    $result = $stmt->execute();
     if ($result) {
         header('Location: index.php?action=home&error=deleted');
     } else {
         header('Location: index.php?action=home&error=errdeleted');
     }
-    $result->close();
+    $stmt->close();
     $conn->close();
 }
 
@@ -98,12 +105,16 @@ function selectCount(){
     $conn = connect();
     $sql = 'SELECT counts FROM completed';
     $result = $conn->query($sql);
-    if($result){
-        $row = $result->fetch_column();
+    if($result === false){
+        $count = 0;
+    } else if($result->num_rows > 0){
+        $row = $result->fetch_assoc();
+        $count = $row['counts'];
+        $result->close();
     } else {
-        $row = 0;
+        $count = 0;
     }
-    $result->close();
     $conn->close();
-    return $row;
+    return $count;
 }
+
