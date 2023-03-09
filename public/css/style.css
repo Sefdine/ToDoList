@@ -66,7 +66,8 @@
     background-color: #abd9ee;
     border-radius: 20px;
 }
-.display_list p{
+.task{
+    text-decoration: none;
     color: #3a3a3a;
     font-size: larger;
     text-align: center;
@@ -89,6 +90,38 @@
     width: max-content;
     font-size: larger;
 }
+.update{
+    text-decoration: none;
+    color: #206417;
+    width: max-content;
+    font-size: larger;
+}
+
+/* Tasks */
+.container_tasks{
+    background-color: rgba(197, 36, 36, 0.329);
+    border-radius: 20px;
+    padding: 20px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+.container_tasks p{
+    font-size: larger;
+}
+.items_links{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+.back_home{
+    margin: auto;
+    text-decoration: none;
+    background-color: #1b459e;
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: #fff;
+}
+
 
 @media screen and (max-width: 500px) {
     .container {

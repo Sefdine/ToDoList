@@ -4,6 +4,8 @@ declare(strict_types=1);
 session_start();
 
 require_once('src/controllers/home.php');
+require_once('src/controllers/task.php');
+
 $action = $_GET['action'] ?? '';
 if(!$action) {
     displayHome();
@@ -38,5 +40,23 @@ if(!$action) {
     } elseif ($action == 'remove') {
         $id = (int)$_GET['id'] ?? 0;
         Remove($id);
+    } elseif ($action == 'displayTask') {
+        $open = (isset($_GET['open'])) ? $_GET['open'] : 0;
+        if ($open) {
+            if ($_SESSION['open']) {
+                $_SESSION['open'] = 0;
+            } else {
+                $_SESSION['open'] = 1;
+            }
+        }
+        $sess_open = $_SESSION['open'] ?? 0;
+        $id = (int)$_GET['id'] ?? 0;
+        $err = $_GET['error'] ?? '';
+        displayTask($id, $sess_open, $err);
+    } elseif ($action == 'submit_form_tasks') {
+        $id = (int)$_GET['id'] ?? 0;
+        $title = $_POST['title'] ?? '';
+        $description = $_POST['description'] ?? '';
+        updateTask($id, $title, $description);
     }
 }
