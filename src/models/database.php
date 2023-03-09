@@ -14,9 +14,8 @@ function connect(){
 }
 
 function insert(string $title, string $description=''){
-    $now = date('Y-m-d h:m:s');
     $conn = connect();
-    $sql = "INSERT INTO todo_list (title, description, date_submit) VALUES ('$title', '$description', '$now')";
+    $sql = "INSERT INTO todo_list (title, description) VALUES ('$title', '$description')";
     if ($conn->query($sql) == TRUE) {
         header('Location: index.php?action=home&error=insert_success');
     } else {
@@ -118,3 +117,39 @@ function selectCount(){
     return $count;
 }
 
+function getData(int $id) {
+    $conn = connect();
+    $sql = "SELECT * FROM todo_list WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('i', $id);
+    $result = $stmt->execute();
+    if ($result == false) {
+        $row = null;
+    } else {
+        $result_set = $stmt->get_result();
+        if ($result_set->num_rows == 0) {
+            $row = null;
+        } else {
+            $row = $result_set->fetch_object();
+        }
+        $result_set->close();
+    }
+    $stmt->close();
+    $conn->close();
+    return $row;
+}
+
+function setTask(int $id, string $title, string $description) {
+    $conn = connect();
+    $sql = "UPDATE todo_list SET title = ?, description = ? WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('ssi', $title, $description, $id);
+    $result = $stmt->execute();
+    if ($result) {
+        header('Location: index.php?action=displayTask&error=updated_success&id='.$id);
+    } else {
+        header('Location: index.php?action=displayTask&error=updated_failed&id='.$id);
+    }
+    $stmt->close();
+    $conn->close();
+}

@@ -23,6 +23,13 @@ switch ($err) {
     case 'errdeleted':
         echo "<div class='btn btn-danger'>Error task undeleted</div>";
         break;
+    case 'updated_success':
+        echo "<div class='btn btn-success'>Task updated successfully</div>";
+        break;
+    case 'updated_failed':
+        echo "<div class='btn btn-danger'>Error task not updated/div>";
+        break;
+
 }
 ?>
 </div>
