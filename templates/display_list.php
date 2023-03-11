@@ -24,7 +24,3 @@
         <?php endforeach; ?>
     </div>
 </div>
-
-
-
-        

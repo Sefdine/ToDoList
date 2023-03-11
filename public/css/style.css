@@ -1,6 +1,7 @@
 
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
 .container{
+    background-color: #4a9915;
     margin-top: 30px;
 }
 .container h1{
@@ -124,6 +125,11 @@
 
 
 @media screen and (max-width: 500px) {
+    .news {
+        display: block;
+        width: 80%;
+        margin: auto;
+    }
     .container {
         margin-top: 10px;
     }
@@ -139,21 +145,41 @@
         padding: 0 10px;
     }
     .form-contr label {
-        font-size: 16px;
+        font-size: 12px;
     }
     .form-contr input[type='text'] {
-        font-size: 16px;
+        font-size: 13px;
     }
     .form-todo input[type='submit'] {
         font-size: 16px;
         padding: 5px 10px;
     }
     .display_list {
+        grid-template-areas: 
+        "t t t t"
+        "c c r r";
         grid-column-gap: 5px;
+        font-size: small;
     }
-    .completed, .uncompleted, .remove {
+    .task {
+        grid-area: t;
+    }
+    .completed {
+        grid-area: c;
+    }
+    .remove{
+        grid-area: r;
+    }
+    .update {
+        grid-area: u;
+    }
+    .completed, .uncompleted, .remove, .update {
         font-size: 16px;
         padding: 5px 10px;
+    }
+    .items_links {
+        display: grid;
+        grid-template-areas: "u c r";
     }
 }
 
