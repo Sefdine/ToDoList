@@ -46,13 +46,14 @@ END;
 
 DROP TRIGGER update_date_submit;
 CREATE TRIGGER update_date_submit
-AFTER UPDATE ON todo_list
+BEFORE UPDATE ON todo_list
 FOR EACH ROW
 BEGIN
     IF (OLD.title != NEW.title OR OLD.description != NEW.description) AND OLD.status = NEW.status THEN
-        UPDATE todo_list SET date_submit = NOW() WHERE id = NEW.id;
+        SET NEW.date_submit = NOW();
     END IF;
 END;
+
 
 
 SELECT * FROM completed;
@@ -63,4 +64,4 @@ SELECT * FROM todo_list;
 
 SHOW VARIABLES LIKE 'log_error';
 
-UPDATE todo_list SET title = 'New Title', description = 'New Description', date_submit = NOW() WHERE id = 43;
+UPDATE todo_list SET title = 'Title', description = 'New Description' WHERE id = 43;
